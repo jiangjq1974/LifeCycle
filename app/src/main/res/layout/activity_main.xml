@@ -13,5 +13,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="调用Activity"
-        android:id="@+id/activity_main_button"/>
+        android:id="@+id/activity_main_button"
+        android:textAllCaps="false"/>
 </RelativeLayout>

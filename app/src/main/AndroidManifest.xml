@@ -15,8 +15,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".SecondActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="SecondActivity"/>
+        <activity
+            android:name=".ThirdActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="ThirdActivity"></activity>
     </application>
 
 </manifest>

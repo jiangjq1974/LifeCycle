@@ -12,27 +12,45 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     public static final String DATA="extra_data";
+    private Button button1;
+    private Button button2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: ");
-        Button button = (Button) findViewById(R.id.activity_main_button);
+        button1 = (Button) findViewById(R.id.activity_main_button);
         final EditText edittext= (EditText) findViewById(R.id.activity_main_edit_text);
         //final String data=edittext.getText().toString();
-        button.setOnClickListener(new View.OnClickListener() {
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //String data="Hello SecondActivity!";
                 String data=edittext.getText().toString();
                 Intent intent=new Intent(MainActivity.this,SecondActivity.class);
                 intent.putExtra(DATA,data);
-                startActivity(intent);
+                //startActivity(intent);
+                startActivityForResult(intent,0);
                 //Toast.makeText(MainActivity.this, "Button clicked", Toast.LENGTH_LONG).show();
 
             }
         });
 
+        button2 = (Button) findViewById(R.id.activity_main_thirdbutton);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,ThirdActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        String name=data.getStringExtra("back");
+        Toast.makeText(MainActivity.this, name, Toast.LENGTH_SHORT).show();
     }
 
     @Override

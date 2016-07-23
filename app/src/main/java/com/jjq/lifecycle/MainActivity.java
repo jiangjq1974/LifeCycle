@@ -6,20 +6,30 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    public static final String DATA="extra_data";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: ");
         Button button = (Button) findViewById(R.id.activity_main_button);
+        final EditText edittext= (EditText) findViewById(R.id.activity_main_edit_text);
+        //final String data=edittext.getText().toString();
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //String data="Hello SecondActivity!";
+                String data=edittext.getText().toString();
                 Intent intent=new Intent(MainActivity.this,SecondActivity.class);
+                intent.putExtra(DATA,data);
                 startActivity(intent);
+                //Toast.makeText(MainActivity.this, "Button clicked", Toast.LENGTH_LONG).show();
+
             }
         });
 
